@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Promise相关</title>
+</head>
+<style>
+</style>
+
+<body>
+    <div id="app">
+        promise的finally方法
+    </div>
+    <script>
+    // 终极方法finally finally其实就是一个promise的then方法的别名，在执行then方法之前，先处理callback函数
+MyPromise.prototype.finally = function(cb) {
+    return this.then(
+        value => MyPromise.resolve(cb()).then(() => value)
+        ,
+        reason => MyPromise.reject(cb()).then(() => { throw reason })
+    )
+}
+   
+    </script>
+
+</body>
+
+</html>

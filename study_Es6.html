@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>study_ES6</title>
+</head>
+<style>
+
+
+
+
+
+
+
+</style>
+
+<body>
+    <div id="app">
+        this关键字总是指向函数所在的当前对象，
+        ES6 又新增了另一个类似的关键字super，指向当前对象的原型对象。
+
+        解构赋值的拷贝是浅拷贝，
+        即如果一个键的值是复合类型的值（数组、对象、函数）、
+        那么解构赋值拷贝的是这个值的引用，而不是这个值的副本。
+
+        扩展运算符的解构赋值，不能复制继承自原型对象的属性。
+
+        如果扩展运算符后面是一个空对象，则没有任何效果。
+        let foo = { ...['a', 'b', 'c'] };
+        foo
+        // {0: "a", 1: "b", 2: "c"}
+    </div>
+    <script>
+        var setarr = [{
+            a: 1
+        }, {
+            a: 1
+        }, {
+            a: 1
+        }, ]
+
+
+        console.log(Array.from(new Set(setarr)))
+        console.log('------------------------set')
+        var arr = [2, 3, 4, 5, 1, 2, 3, 4];
+        console.log('------------------------sort')
+        let sortarry = arr.sort((a, b) => {
+            return b - a
+        })
+        console.log(sortarry)
+        var arr1 = [, null, undefined, null, 4, 'ddd'];
+
+        console.log('------------------------entries')
+        let dd = arr.entries()
+        console.log(dd.next())
+        console.log(dd.next().value)
+        console.log(dd.next())
+        console.log(dd.next())
+        console.log(dd.next())
+
+
+        console.log('------------------------forEach')
+        arr1.forEach((element, index) => {
+            console.log(element, index)
+        });
+
+        console.log('-------------------------filter')
+        arr1.filter((element, index) => {
+            console.log(element, index)
+        });
+
+        console.log('-------------------------every')
+        let arr2 = [1, 1, 1, 1, 1, 1, 1]
+        let ev = arr2.every((x, i) => {
+
+            console.log(x, i)
+            return x >= 0
+        }); //所有数都满足条件  则返回 true
+        console.log('-------------------------some')
+
+        let sv = arr.some((x, i) => {
+
+            console.log(x, i)
+            return x >= 0
+        }); //只要有一个满足条件  则返回 true
+
+        console.log(sv)
+        console.log('-------------------------typeof')
+        console.log(typeof arr.toString())
+    </script>
+
+</body>
+
+</html>

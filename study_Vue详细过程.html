@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>study_小知识点记录</title>
+</head>
+<style>
+</style>
+
+<body>
+    <div id="app">
+
+        简而言之，就是先转化成AST树，再得到的render函数返回VNode（Vue的虚拟DOM节点）
+        详情步骤：
+        首先，通过compile编译器把template编译成AST语法树
+        （abstract syntax tree 即 源代码的抽象语法结构的树状表现形式），
+        compile是createCompiler的返回值，
+        createCompiler是用以创建编译器的。
+        另外compile还负责合并option。
+        然后，AST会经过generate（将AST语法树转化成render funtion字符串的过程）得到render函数，
+        render的返回值是VNode，VNode是Vue的虚拟DOM节点，里面有（标签名、子节点、文本等等）
+     
+        
+
+
+
+
+
+
+
+        vue 生命周期数据详解：
+        beforeCreate 拿不到任何数据
+        created：在实例创建完成后被立即调用
+        实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。
+        拿到实例里面的数据和方法
+
+        beforeMount：在挂载开始之前被调用：相关的render函数首次被调用。
+        不论是created还是beforeMount在它们里面都拿不到真实的dom元素，
+
+
+        mounted：
+        上面的案例mounted可以拿到dom元素，
+        但也只是能拿到初始化数据里的dom元素，
+        如果是存在异步对dom元素数据进行更改我们就只能在updated里获取，
+        应用场景：初始数据（在data中有的）的dom渲染完毕，可以获取dom
+        $children子组件的获取也需要在mounted里
+
+
+        beforeUpdate
+
+        当数据更新后出发的钩子函数，
+        这个钩子函数里拿到的是更改之前的数据，
+        虚拟DOM重新渲染和打补丁之前被调用。
+        你可以在这个钩子中进一步地修改data，这不会触发附加的重渲染过程。
+
+
+
+        updated
+        update只要相关的数据更改一次就会执行一次，
+        注意：updated是指mouted钩子后（包括mounted）的数据更改，
+        在created里的数据更改不叫更改叫做初始化，
+        应用场景：如果dom操作依赖的数据是在异步操作中获取，并且只有一次数据的更改 
+        也可以说是数据更新完毕：
+        如果对数据更新做一些统一处理在updated钩子中处理即可。
+
+        注意：当这个钩子被调用时，组件DOM的data已经更新，
+        所以你现在可以执行依赖于DOM的操作。
+        但是不要在当前钩子里修改当前组件中的data，
+        否则会继续触发beforeUpdate、updated这两个生命周期，进入死循环！
+
+
+
+        beforeDestroy
+        实例销毁之前调用。在这一步，实例仍然完全可用
+
+        destroyed
+        Vue 实例销毁后调用。
+        调用后，Vue 实例指示的所有东西都会解绑定，
+        所有的事件监听器会被移除，所有的子实例也会被销毁。
+
+
+        .exact 修饰符允许你控制由精确的系统修饰符组合触发的事件。
+        .passive 会告诉浏览器你不想阻止事件的默认行为。
+        .trim   如果要自动过滤用户输入的首尾空白字符，可以给 v-model 添加 trim 修饰符：
+         <input v-model.trim="msg">
+       v-mode.lazy   会转化为change事件
+
+
+    </div>
+    <script>
+        
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [2, 3, 1, 0, 2, 5, 3]
+        console.log(findRepeatNumber(nums))
+
+        function findRepeatNumber(nums) {
+            let map = new Map()
+            // let arr = []
+            for (let i = 0; i < nums.length; i++) {
+                let item = map.get(nums[i])
+                if (item) {
+                    // arr.push(nums[i])
+                    return nums[i]
+                } else {
+                    map.set(nums[i], 1)
+                }
+            }
+            // return arr
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

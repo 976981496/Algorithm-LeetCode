@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let candies  = [1,1,2,3]
+        console.log(distributeCandies(candies))
+
+        function distributeCandies(candies) {
+            let map = new Map()
+            let type
+            for (let i = 0; i < candies.length; i++) {
+                const item = map.get(candies[i])
+                map.set(candies[i], item == undefined ? 1 : item + 1)
+            }
+            let mid = candies.length / 2
+            console.log(mid)
+            console.log(map)
+            console.log(map.keys())
+            let keys = [...map.keys()]
+            let keys_len = keys.length
+            console.log(keys.length)
+            if (keys_len >= mid) {
+                type = mid
+            } else {
+
+                type = keys_len
+            }
+            return type
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

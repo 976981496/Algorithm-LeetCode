@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>li study_图形</title>
+</head>
+
+<style>
+    .test1 {
+        width: 0px;
+        height: 0px;
+        border: 40px solid;
+        border-color: transparent transparent red ;
+
+    }
+
+
+    .test2 {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #ccc;
+    }
+
+
+
+    .test3 {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px 0 0 0;
+        background-color: green;
+
+    }
+
+    .test4 {
+        width: 100px;
+        height: 50px;
+        background-color: blue;
+        border-radius: 100px 100px 0 0;
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -25px 0 0 -50px;
+    }
+</style>
+
+<body>
+
+    <body>
+        <div id="app">
+
+            <div class="test1"></div>
+            <div class="test2"></div>
+            <div class="test3"></div>
+            <div class="test4"></div>
+
+
+        </div>
+        <script>
+            let a = {
+                i: 1,
+                valueOf: function () {
+                    return this.i++
+                }
+            }
+            console.log(a)
+            // var a = {
+            //     i: 1,
+            //     valueOf: function () {
+            //         return this.i++;
+            //     }
+            // }
+            if (a == 1 && a == 2 && a == 3) {
+                console.log('a', 4); // { i: 4, valueOf: [Function: valueOf] } 输出 a 对象，注意 i 的值
+            }
+            
+        </script>
+
+    </body>
+
+</html>

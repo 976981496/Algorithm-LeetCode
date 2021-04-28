@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>isPalindrome</title>
+</head>
+
+<body>
+    <div id="app">
+        回文数
+        解题思想：
+    </div>
+
+    <script>
+        /**
+         * @param {number} x
+         * @return {boolean}
+         */
+        let x = -121
+        console.log(isPalindrome(x))
+        isPalindrome(x)
+
+        function isPalindrome(x) {
+            let str_p = String(x)
+            let str_l = String(x)
+            let p = 0
+            let l=str_l.length
+            
+         
+            console.log(str_p)
+            while (p<l) {
+            console.log(p)
+            console.log(str_p[p])
+            console.log(str_l[l])
+                if (str_p[p]!==str_l[l]) {
+                    return false
+                }
+                p++
+                l--
+            }
+            return true
+        };
+    </script>
+
+</body>
+
+</html>

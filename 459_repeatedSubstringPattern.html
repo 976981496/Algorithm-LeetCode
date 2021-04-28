@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = "1cgcg111"
+        console.log(repeatedSubstringPattern(nums))
+        /**
+         * @param {string} s
+         * @return {boolean}
+         */
+        function repeatedSubstringPattern(s) {
+        let str=(s + s).slice(1, -1)
+            console.log(str)
+            return str.includes(s)
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>twoSum</title>
+</head>
+
+<body>
+    <div id="app">
+        回文数
+        解题思想：
+    </div>
+
+    <script>
+        /**
+         * @param {number} x
+         * @return {boolean}
+         */
+        let nums = [2, 7, 11, 15],
+            target = 9
+        console.log(twoSum(nums, target))
+        twoSum(nums, target)
+
+        function twoSum(nums, target) {
+            let obj = {}
+            for (let i = 0; i < nums.length; i++) {
+                
+                const element = target - nums[i];
+           
+                obj[element] = i
+                if (obj[nums[i]]) {
+                    return [i, obj[nums[i]]]
+                }
+                console.log(obj)
+                debugger
+            }
+            return [0, 0]
+        };
+    </script>
+
+</body>
+
+</html>

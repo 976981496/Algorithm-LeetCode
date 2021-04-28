@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let points = [
+            [1, 2],
+            [3, 4],
+            [5, 6],
+            [7, 8]
+        ]
+        console.log(findMinArrowShots(points))
+        findMinArrowShots(points)
+
+        function findMinArrowShots(points) {
+            points.sort(function (x, y) {
+                return x[1] - y[1];
+            });
+            console.log(points)
+
+            let numPel = 1
+            let len = points.length
+
+            let xStart, xEnd, firstEnd = points[0][1];
+            for (let i = 1; i < len; i++) {
+                let p=points[i]
+                xStart = p[0];
+                xEnd = p[1];
+                if (firstEnd < xStart) {
+                    numPel++;
+                    firstEnd = xEnd;
+                }
+
+            }
+            
+            return numPel
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

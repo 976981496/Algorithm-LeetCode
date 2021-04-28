@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        let nums = [2, 1, 2, 2, 3, 0, 4, 2],
+            val = 2
+        console.log(removeElement(nums, val))
+        removeElement(nums, val)
+
+        function removeElement(nums, val) {
+            let p1 = 0
+            let n = nums.length
+            for (let i = 0; i < n; i++) {
+                const element = nums[i];
+                if (nums[i] != val) {
+                    nums[p1]=nums[i]
+                    p1++
+                }
+            }
+            return p1
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Definition for singly-linked list.
+         * function ListNode(val, next) {
+         *     this.val = (val===undefined ? 0 : val)
+         *     this.next = (next===undefined ? null : next)
+         * }
+         */
+
+        function ListNode(val, next) {
+            this.val = (val === undefined ? 0 : val)
+            this.next = (next === undefined ? null : next)
+        }
+        /**
+         * @param {ListNode} head
+         * @return {ListNode}
+         */
+        let head=new ListNode([1,2,3,4,5])
+        var reverseList = function (head) {
+            let pre = null
+            let cur = head
+
+            while (cur != null) {
+            console.log(cur)
+                let next = cur.next
+                cur.next = pre
+                pre = cur
+                cur = next
+            }
+
+            console.log(pre)
+            return pre
+        };
+
+        console.log(reverseList(head))
+
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

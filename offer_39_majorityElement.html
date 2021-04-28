@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [1,1,2,2,2,3,3]
+        console.log(majorityElement(nums))
+        /**
+         * @param {number} n
+         * @return {number[]}
+         */
+        function majorityElement(nums) {
+            let map = new Map()
+            let len = nums.length
+            if (len<2) {
+                return nums[0]
+            }
+            let mid = parseInt(len / 2) 
+            console.log(mid)
+            for (let i = 0; i < len; i++) {
+                const item = map.get(nums[i]);
+                if (item) {
+                    map.set(nums[i], item + 1)
+                   
+                    if (item+1 > mid) {
+                        return nums[i]
+                    }
+                } else {
+
+                    map.set(nums[i], 1)
+                }
+
+            }
+            
+            return null
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

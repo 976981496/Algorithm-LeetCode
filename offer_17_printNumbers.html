@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let n = 2
+        console.log(printNumbers(n))
+        /**
+         * @param {number} n
+         * @return {number[]}
+         */
+        function printNumbers(n) {
+            let sum = Math.pow(10, n)
+            let arr = []
+            for (let i = 1; i < sum; i++) {
+                arr.push(i)
+
+            }
+            return arr
+        };
+        // function printNumbers(n) {
+        //     let sum = ''
+        //     let arr = []
+        //     for (let i = 0; i < n; i++) {
+        //         sum += (9).toString()
+        //     }
+        //     sum = parseInt(sum)
+
+        //     for (let i = sum; i > 0; i--) {
+        //         arr.unshift(i)
+
+        //     }
+        //     return arr
+        // };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

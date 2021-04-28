@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [0, 1,2,3]
+        console.log(containsDuplicate(nums))
+
+        function containsDuplicate(nums) {
+            let obj = {}
+            for (let i = 0; i < nums.length; i++) {
+                if (nums[i] in obj) {
+                    return true
+                } else {
+                    obj[nums[i]] = i
+                }
+
+            }
+            return false
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let findKthLargest = function (nums, k) {
+            // 从 nums 中取出前 k 个数,构建一个小顶堆
+            
+            let nums= [3,3,4,5]
+            let heap = [ , ],
+                i = 0
+            while (i < k) {
+                heap.push(nums[i++])
+            }
+            buildHeap(heap, k)
+
+            // 从 k 位开始遍历数组
+            for (let i = k; i < nums.length; i++) {
+                if (heap[1] < nums[i]) {
+                    // 替换并堆化
+                    heap[1] = nums[i]
+                    heapify(heap, k, 1)
+                }
+            }
+
+            // 返回堆顶元素
+            return heap[1]
+        };
+
+        // 原地建堆，从后往前，自上而下式建小顶堆
+        //k 为 当前堆 的个数
+        //在二叉树的第i层上，至多有2^i-1个节点
+        let buildHeap = (arr, k) => {
+            if (k === 1) return
+            // 从最后一个非叶子节点开始，自上而下式堆化   Math.floor向下取整
+            //序数 >= floor(N/2)都是叶子节点，例如：floor(9/2) = 4，则从下标4开始的值都为叶子节点
+            for (let i = Math.floor(k / 2); i >= 1; i--) {
+                heapify(arr, k, i)
+            }
+        }
+// k=4
+//         5          -----1
+//     4       3      ------2
+
+
+
+// k=1
+//      5
+
+arr= [3,1,2,3,4,5]
+
+heap= [ ,3,3,4,5]
+// k=4
+//         ,          -----1
+//     3       3      ------2
+//   4   5  
+
+
+int arrows = 1;
+    int xStart, xEnd, firstEnd = points[0][1];
+    for (int[] p : points) {
+      xStart = p[0];
+      xEnd = p[1];
+      // if the current balloon starts after the end of another one,
+      // one needs one more arrow
+      if (firstEnd < xStart) {
+        arrows++;
+        firstEnd = xEnd;
+      }
+    }
+
+    return arrows;
+
+作者：LeetCode
+链接：https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/solution/yong-zui-shao-shu-liang-de-jian-yin-bao-qi-qiu-b-2/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+        // 堆化 i 是层级
+        let heapify = (arr, k, i) => {
+            // 自上而下式堆化
+            while (true) {
+                let minIndex = i
+                if (2 * i <= k && arr[2 * i] < arr[i]) {
+                    minIndex = 2 * i
+                }
+                // left
+                if (2 * i + 1 <= k && arr[2 * i + 1] < arr[minIndex]) {
+                    minIndex = 2 * i + 1
+                }
+                if (minIndex !== i) {
+                    swap(arr, i, minIndex)
+                    i = minIndex
+                } else {
+                    break
+                }
+            }
+        }
+
+        // 交换
+        let swap = (arr, i, j) => {
+            let temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
+        }
+        let list = [3,2,3,4,5]
+        console.log(findKthLargest(list, 4))
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

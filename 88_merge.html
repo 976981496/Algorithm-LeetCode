@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        let nums1 = [1, 2, 3, 0, 0, 0],
+            m = 3,
+            nums2 = [2, 5, 6],
+            n = 3
+        console.log(merge(nums1, m, nums2, n))
+
+
+        function merge(nums1, m, nums2, n) {
+
+            nums1.splice(m)
+            nums2.splice(n)
+            let arr = [...nums1, ...nums2]
+            arr.sort(function (a, b) {
+                return a - b;
+            })
+            console.log(arr)
+            return arr
+
+
+        };
+    </script>
+
+</body>
+
+</html>

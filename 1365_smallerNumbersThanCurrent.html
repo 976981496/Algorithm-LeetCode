@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [4,5,76,8,4,2]
+        console.log(smallerNumbersThanCurrent(nums))
+
+        function smallerNumbersThanCurrent(nums) {
+            let map = new Map()
+            for (let i = 0; i < nums.length; i++) {
+                const item = map.get(nums[i])
+                map.set(nums[i], item == undefined ? 1 : item + 1)
+            }
+            console.log('map---',map[2])
+            const result = Array(nums.length).fill(0);
+            for (let i = 0; i < nums.length; i++) {
+                const item = nums[i]
+                for (let j = 0; j < item; j++) {
+                    value=map.get(j)
+                    if (value) {
+                        console.log(result[i])
+                        result[i] += value
+                    }
+                }
+            }
+
+            return result
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

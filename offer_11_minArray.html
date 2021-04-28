@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let numbers = [3,4,5,0,1,2]
+        console.log(minArray(numbers))
+
+        function minArray(numbers) {
+            let left=0,
+        right=numbers.length-1;
+    while(left<right){
+        // 二分法
+        //floor() 方法执行的是向下取整计算，它返回的是小于或等于函数参数，并且与之最接近的整数。
+        const temp=Math.floor(left+(right-left)/2); 
+        if(numbers[temp] > numbers[right]){
+            left=temp+1;
+        }else if (numbers[temp] < numbers[right]){
+            right=temp
+        }else{
+            right--
+        }
+    }
+    return numbers[left]
+    
+
+
+
+
+
+
+
+
+
+
+
+      
+            // return Math.min(...numbers)
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

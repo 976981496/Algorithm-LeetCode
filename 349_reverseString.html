@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s =["H","a","n","n","a","h"]
+        console.log(reverseString(s))
+        /**
+         * @param {string} s
+         * @return {boolean}
+         */
+        function reverseString(s) {
+            let start = 0
+            let end = s.length-1
+            let len = s.length
+            while (start < end) {
+                let temp = s[end]
+                s[end] = s[start]
+                s[start] = temp
+                end--
+                start++
+            }
+
+
+
+
+            return s
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

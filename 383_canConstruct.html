@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let ransomNote="aa",  magazin="aab"
+         console.log(findTheDifference(ransomNote, magazine))
+
+        function findTheDifference(ransomNote, magazine) {
+            let map = new Map()
+            for (let i = 0; i < magazine.length; i++) {
+                const item = map.get(magazine[i])
+                map.set(magazine[i], item == undefined ? 1 : item + 1)
+            }
+
+
+            for (let i = 0; i < ransomNote.length; i++) {
+                const item = map.get(ransomNote[i])
+                if (item == 0 || item == undefined) {
+                    return false
+
+                } else {
+                    map.set(ransomNote[i], item - 1)
+                }
+            }
+            return true
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

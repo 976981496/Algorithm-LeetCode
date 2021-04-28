@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        let arr = [2, 0, 0, 3, 4]
+
+        shellSort(arr)
+
+
+        function shellSort(arr) {
+
+            let len = arr && arr.length
+            let temp = 0
+            let i, j = 0
+            let h = len
+
+            while (h > 1) {
+                h = parseInt(h / 3 + 1)
+
+                console.log(h)
+                for (i = h; i < len; i++) {
+
+                    if (arr[i] < arr[i - h]) {
+
+
+                        temp = arr[i]
+
+                        for (j = i - h; arr[j] > temp; j -= h) {
+                            arr[j + h] = arr[j]
+                        }
+                        arr[j + h] = temp
+                    }
+
+                }
+
+
+            }
+        console.log(arr)
+            return arr
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        let arr = [2, 0, 0, 3, 4]
+
+        mergingSort(arr)
+
+
+        function merger(a, b) {
+            let n = a && a.length
+            let m = b && b.length
+            let c = []
+            let i = 0,
+                j = 0
+            while (i < n && j < m) {
+                if (a[i] < b[j]) {
+                    c.push(a[i++])
+                } else {
+                    c.push(b[j++])
+                }
+
+            }
+            while (i < n) {
+                c.push(a[i++])
+            }
+            while (j < m) {
+                c.push(b[j++])
+            }
+            console.log("将数组", a, '和', b, '合并为', c)
+            return c
+
+        }
+        function mergingSort(arr) {
+            if (arr.length == 1) {
+                return arr
+            }
+            let mid = Math.floor(arr.length / 2)
+            let left = arr.slice(0, mid)
+            let right = arr.slice(mid)
+            return merger(mergingSort(left), mergingSort(right))
+        };
+    </script>
+
+</body>
+
+</html>

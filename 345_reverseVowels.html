@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s = "hello"
+        console.log(reverseVowels(s))
+
+        function reverseVowels(s) {
+            if (s.length < 2) {
+                return s
+            }
+            let obj = {
+                a: true,
+                e: true,
+                i: true,
+                o: true,
+                u: true
+            }
+            let start = 0
+            let end = s.length - 1
+            
+            // while (start <= end) {
+            //     let item_start = s[start]
+            //     console.log(item_start)
+            //     let item_end = s[end]
+            //     console.log(item_end)
+            //     if (obj[item_start]) {
+            //         if (obj[item_end]) {
+            //         let temp = item_start
+                    
+            //     console.log('temp====',temp)
+            //             item_start = item_end
+            //             item_end = temp
+            //     }
+            //     item_end--
+            //     }
+                
+
+            // }
+
+            return s
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

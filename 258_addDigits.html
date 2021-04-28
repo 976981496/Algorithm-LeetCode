@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let num = 38
+        console.log(addDigits(num))
+
+        function addDigits(num) {
+            if (num < 10) return num
+            return num % 9 || 9
+        };
+        // function addDigits(num) {
+        //     let new_num = num.toString().split('')
+        //     let str = 0
+        //     for (let i = 0; i < new_num.length; i++) {
+        //         str += parseInt(new_num[i])
+        //     }
+        //     str = str.toString()
+        //     if (str.length > 1) {
+        //       str=addDigits(str)
+        //     }
+        //     console.log(str)
+        //     return str
+        // };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

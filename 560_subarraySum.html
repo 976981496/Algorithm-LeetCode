@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [1, 3,5,4,5,5,4,],
+            k = 9
+        console.log(subarraySum(nums, k))
+
+        function subarraySum(nums, k) {
+            let count = 0
+            for (let state = 0; state < nums.length; state++) {
+                const item = nums[state];
+                let sum = 0
+                for (let end = state; end >= 0; --end) {
+                    sum += nums[end]
+                    if (sum == k) {
+                        count++
+                    }
+                }
+            }
+return count
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

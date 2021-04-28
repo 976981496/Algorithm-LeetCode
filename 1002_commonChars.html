@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let A = ["acabcddd", "bcbdbcbd", "baddbadb", "cbdddcac", "aacbcccd", "ccccddda", "cababaab", "addcaccd"]
+        // let A = ["bella", "label", "roller"]
+        console.log(commonChars(A))
+
+
+
+        function commonChars(A) {
+            return A.reduce((prev, next) => getCommon(prev, next))
+        }
+
+        function getCommon(a, b) {
+
+            let hash = new Map()
+            let b_len = b.length
+            let len = a.length
+            for (let i = 0; i < a.length; i++) {
+                let temp = hash.get(a[i])
+                if (temp) {
+
+                    hash.set(a[i], temp + 1)
+                } else {
+                    hash.set(a[i], 1)
+                }
+            }
+            fa
+            let res = []
+            for (let j = 0; j < b_len; j++) {
+                let temp = hash.get(b[j])
+                if (temp) {
+                    res.push(b[j])
+                    hash.set(b[j], temp - 1)
+                }
+            }
+            return res
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> 
+        打印出所有水仙花数。
+        （每位数字的立方和等于该数即水仙花数，例：153=1*1*1*1+5*5*5+3*3*3）
+    </title>
+</head>
+
+<body>
+    <script>
+        //循环输出所有三位数逐一判断
+        for (var i = 100; i < 1000; i++) {
+            //取出个位数字
+            var a = i % 10;
+            //取出十位数字
+            var b = parseInt(i % 100 / 10);
+            //取出百位数字
+            var c = parseInt(i / 100);
+            //用水仙花数条件进行判断
+            if (a * a * a + b * b * b + c * c * c === i) {
+                console.log(i);
+            }
+        }
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>li 列表</title>
+</head>
+<style>
+
+
+
+
+
+
+
+</style>
+
+<body>
+    <div id="app">
+
+        <ul class="test" id="test">
+            <li>33</li>
+            <li>334</li>
+            <li>444</li>
+            <li>55</li>
+            <li>666</li>
+
+        </ul>
+
+
+    </div>
+    <script>
+        var arr = [1, 2, 3, 4];
+        var sum = arr.reduce(function (prev, cur, index, arr) {
+            console.log(prev, cur, index,arr);
+            return prev + cur;
+        })
+        console.log(arr, sum);
+
+
+
+
+
+        // var parentUl = document.getElementById('test')
+        // parentUl.onclick = function (e,index) {
+        //     console.log('当前li元素：', e,index)
+        // }
+        // var lis = document.getElementsByTagName('li')
+        // console.log(lis)
+        // for (let i = 0; i < lis.length; i++) {
+        //     lis[i].onclick = function (e) {
+        //         console.log('当前li元素：', i)
+        //     }
+        // }
+
+
+
+        // let lis = document.querySelectorAll('li')
+        // console.log(lis)
+        // for (let index = 0; index < lis.length; index++) {
+        //     const element = lis[index];
+        //     element.onclick = function () {
+        //         console.log(index+1)
+        //     }
+
+        // }
+    </script>
+
+</body>
+
+</html>

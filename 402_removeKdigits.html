@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let num = '10'
+        let k = 2
+        console.log(removeKdigits(num, k))
+
+        function removeKdigits(num, k) {
+            let stack = []
+            for (let i = 0; i < num.length; i++) {
+                let item = num[i]
+                console.log('nums', item)
+                while (stack[stack.length - 1] > item && k > 0 && stack.length > 0) {
+                    stack.pop() //删除数组第一个元素
+                    k--
+                }
+                stack.push(item)
+            }
+            while (k > 0) {
+                stack.pop()
+                k--
+            }
+            while (stack.length > 0 && stack[0] == 0) {
+                stack.shift()
+            }
+            console.log(stack.join(''))
+            //stack.join('') 数组转字符串  以‘’为分割符
+            return stack.length ? stack.join('') : '0'
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

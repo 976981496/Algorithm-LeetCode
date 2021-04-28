@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>removeDuplicates</title>
+</head>
+
+<body>
+    <div id="app">
+        解题思想：
+        双指针 排序好的序列一般相似的在一起
+        
+    </div>
+
+    <script>
+        let nums = [1,1,2]
+        console.log(removeDuplicates(nums))
+        removeDuplicates(nums)
+
+        function removeDuplicates(nums) {
+          let p1=0,p2=1
+          while (p2<nums.length) {
+              if (nums[p1]!=nums[p2]) {
+                  p1++
+                  nums[p1]=nums[p2]
+              }
+              p2++
+          }
+          return p1+1
+        };
+    </script>
+
+</body>
+
+</html>

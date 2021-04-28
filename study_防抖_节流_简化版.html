@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>防抖_节流</title>
+</head>
+<style>
+</style>
+
+<body>
+    <div id="app">
+        防抖（debounce）
+        按最后一次点击算
+        设置定时器 然后清除定时器在开启定时器
+
+
+
+        节流（throttle）
+        在一段时间内执行一次
+        俺第一次时间算 稀释点击频率
+        设置锁 不能开启就不让点
+
+
+
+
+
+
+
+    </div>
+    <script>
+        function debounce(fn, wait) {
+            let time_go
+
+            return function () {
+                let context = this
+                let args = arguments
+                if (time_go) {
+
+                    clearTimeout(time_go)
+                }
+
+                time_go = setTimeout(() => {
+
+                    fn.apply(context, args)
+
+
+                }, wait);
+
+
+            }
+
+
+
+
+        }
+
+        function throttle(fn, wait, ) {
+
+
+            // 时间间隔
+            let pre = 0
+
+            return function (params) {
+                let now = Date.now()
+                if (now - pre > wait) {
+                    fn.apply(this.arguments)
+                    pre = now
+
+                }
+
+            }
+
+
+
+
+
+
+
+
+        }

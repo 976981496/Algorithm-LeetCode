@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Definition for singly-linked list.
+         * function ListNode(val, next) {
+         *     this.val = (val===undefined ? 0 : val)
+         *     this.next = (next===undefined ? null : next)
+         * }
+         */
+        function ListNode(val, next) {
+            this.val = (val === undefined ? 0 : val)
+            this.next = (next === undefined ? null : next)
+        }
+        /**
+         * @param {ListNode[]} lists
+         * @return {ListNode}
+         */
+        let lists = [
+            [1, 4, 5],
+            [1, 3, 4],
+            [2, 6]
+        ]
+        var mergeKLists = function(lists) {
+    return lists.reduce((p, n) => {
+        console.log('p',p)
+        while (n) {
+        console.log('n')
+        console.log(n)
+            p.push(n), n = n.next
+        }
+        return p
+    },[]).sort((a, b) => a.val - b.val).reduceRight((p, n) => (n.next = p, p = n, p), null)
+};
+
+        console.log(mergeKLists(lists))
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

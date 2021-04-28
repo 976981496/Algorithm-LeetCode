@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [4, 1, 4, 6]
+        console.log(singleNumbers(nums))
+
+        function singleNumbers(nums) {
+            let map = new Map()
+            for (let i = 0; i < nums.length; i++) {
+                const val = map.get(nums[i]);
+                map.set(nums[i], val == undefined ? 1 : val + 1)
+            }
+
+            let arr = []
+            for (let i = 0; i < nums.length; i++) {
+                const val = map.get(nums[i]);
+                if (val == 1) {
+                    arr.push(nums[i])
+                }
+            }
+            return arr
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

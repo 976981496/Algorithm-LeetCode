@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s = "codeleet",
+            indices = [4, 5, 6, 7, 0, 2, 1, 3]
+        console.log(restoreString(s, indices))
+
+        function restoreString(s, indices) {
+         let len=s.length
+         let result=new Array(len)
+         for (let i = 0; i < len; i++) {
+            result[indices[i]]=s.charAt(i)
+         }
+return result.join('')
+    
+    return str
+
+        };
+    //     function restoreString(s, indices) {
+    //         let obj = {}
+    //         for (let i = 0; i < indices.length; i++) {
+    //             const arr_item = indices[i];
+    //             const str_item = s[i];
+    //             console.log(arr_item)
+    //             console.log(str_item)
+    //             obj[arr_item] = str_item
+    //             console.log(obj)
+    //         }
+    //         let str=''
+    //         for (const key in obj) {
+    //             if (obj.hasOwnProperty(key)) {
+    //                 const element = obj[key];
+    //                 console.log(element)
+    //                 str+=element
+    //             }
+    //         }
+    
+    // return str
+
+    //     };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [3, 2, 1, 5, 6, 4],
+            k = 2
+        console.log(findKthLargest(nums, k))
+
+        function findKthLargest(nums, k) {
+            nums.sort((a, b) => b - a)
+            console.log(nums)
+            let k_max = nums[k-1]
+            return k_max
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

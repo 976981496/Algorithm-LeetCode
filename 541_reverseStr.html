@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s = "abcdefg",
+            k = 2
+        console.log(reverseStr(s, k))
+
+        function reverseStr(s, k) {
+
+            let first = s.substring(0, k)
+            let sec = s.substring(k)
+            console.log(sec)
+            console.log(first)
+            first = first.split('').reverse().join('')
+            let new_str = `${first}${sec}`
+            return new_str
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

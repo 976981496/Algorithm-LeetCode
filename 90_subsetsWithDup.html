@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [1, 2, 3, 4, 0]
+        console.log(subsetsWithDup(nums))
+
+        function subsetsWithDup(nums) {
+            nums.sort((a, b) => {
+                a - b
+            })
+            let n = nums.length
+            let res = []
+            let temPath = []
+            let hash = {}
+            console.log(nums)
+            let basktrck = (temPath, start) => {
+                res.push(temPath)
+                for (let i = start; i < n; i++) {
+                    if (hash[i] || (i > 0 && hash[i - 1] && nums[i])) {
+                        continue
+                    }
+                    hash[i] = true
+                    temPath.push(nums[i])
+                    //temPath.slice() 返回新的数组 和原数组一样
+                    
+                    basktrck(temPath.slice(), i + 1)
+                    hash[i] = false
+                    temPath.pop()
+                    
+                }
+            }
+            basktrck(temPath, 0)
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

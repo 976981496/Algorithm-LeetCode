@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s ="" 
+        console.log(firstUniqChar(s))
+
+        function firstUniqChar(s) {
+            let map = new Map()
+let str=" "
+            for (let i = 0; i < s.length; i++) {
+                const val = map.get(s[i]);
+                map.set(s[i], val == undefined ? 1 : val + 1)
+            }
+
+
+            for (let i = 0; i < s.length; i++) {
+                const val = map.get(s[i]);
+                if (val == 1) {
+                    return s[i]
+                }
+            }
+            return str
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

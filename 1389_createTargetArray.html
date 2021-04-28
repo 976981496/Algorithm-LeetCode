@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [1, 2, 3, 4, 0],
+            index = [0, 1, 2, 3, 0]
+        console.log(createTargetArray(nums, index))
+
+        function createTargetArray(nums, index) {
+            let newarr = []
+            for (let i = 0; i < nums.length; i++) {
+                newarr.splice(index[i], 0, nums[i])
+            }
+            return newarr
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+<div>
+    解题思路：
+    
+</div>
+
+<body>
+    <script>
+        let strs = ["flower", "flow", "flight"]
+        console.log(longestCommonPrefix(strs))
+
+        function longestCommonPrefix(strs) {
+            let res = ''
+
+            if (strs.length < 1) {
+                return res
+            }
+
+            for (let i = 0; i < strs[0].length; i++) {
+                for (let j = 1; j < strs.length; j++) {
+                    if (strs[j][i] != strs[0][i]) return res
+                }
+                res += strs[0][i]
+            }
+            return res
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

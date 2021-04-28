@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s = "anagram",
+            t = "nagaram"
+        console.log(isAnagram(s, t))
+
+        function isAnagram(s, t) {
+            let newArry = s.split('').sort()
+            let tArry = t.split('').sort()
+            console.log(tArry)
+            console.log(newArry)
+            console.log(JSON.stringify(newArry))
+            console.log(JSON.stringify(tArry))
+
+            if (JSON.stringify(newArry) == JSON.stringify(tArry)) {
+                return true
+
+            }
+
+            return false
+
+
+
+
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

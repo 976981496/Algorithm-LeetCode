@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        //将chars 放在map结构里面，如果当前字母的每一个都在这个，map里面。则存在
+        let words = ["cat", "bt", "hat", "tree"],
+            chars = "atach"
+        console.log(countCharacters(words, chars))
+
+
+        function countCharacters(words, chars) {
+            let charsMap = new Map()
+            let size = 0
+            for (let i = 0; i < chars.length; i++) {
+                const item = charsMap.get(chars[i])
+                charsMap.set(chars[i], item == undefined ? 1 : item + 1)
+            }
+
+            for (let i = 0; i < words.length; i++) {
+
+                let word = words[i]
+                let wordMap = new Map()
+                let enough = true
+
+                for (let char of word) {
+                    const item = wordMap.get(char)
+                    wordMap.set(char, item == undefined ? 1 : item + 1)
+                }
+
+
+                for (let char of word) {
+                    if (wordMap.get(char) > charsMap.get(char) || charsMap.get(char) == undefined) {
+                        enough = false
+                        break
+                    }
+
+                }
+
+                if (enough) {
+                    size += word.length
+                }
+
+            }
+
+            return size
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

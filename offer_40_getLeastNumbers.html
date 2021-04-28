@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let arr = [0,3, 2, 1],
+            k = 1
+        console.log(getLeastNumbers(arr, k))
+
+        function getLeastNumbers(arr, k) {
+            arr = arr.sort((a, b) => {
+                return a - b
+            })
+            arr = arr.splice(0, k)
+
+            return arr
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

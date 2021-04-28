@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+
+</head>
+<div>
+
+    解题思路：
+    先将数组内的数字取出，用join 来链接
+    然后转换成数字类型
+    然后+1 
+    然后转换成字符串遍历添加到数组
+    
+</div>
+
+<body>
+    <script>
+        let digits = [999]
+        console.log(plusOne(digits))
+
+        function plusOne(digits) {
+            let num= parseInt(digits.join('')) +1
+           let str_num=num.toString()
+           let arr=[]
+           for (let i = 0; i < str_num.length; i++) {
+               const s = str_num[i];
+               arr.push( s)  
+           }
+            return arr
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums = [0, 0, 1]
+        console.log(moveZeroes(nums))
+
+        function moveZeroes(nums) {
+            if (nums.length < 1) {
+                return
+            }
+
+            let len = nums.length
+            let j = 0
+            for (let i = 0; i < len; i++) {
+                const ele = nums[i];
+                console.log(i, ele)
+                if (ele != 0) {
+                    if (i > j) {
+                        nums[j] = nums[i]
+                        nums[i] = 0
+                    }
+                    j++
+                }
+
+            }
+            return nums
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

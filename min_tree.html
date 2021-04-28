@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Created by caoke on 2015/11/21.
+         */
+        //二叉树 特点父节点比子节点小
+        var Tree2 = function () {
+            //初始化 二叉树的子元素
+            this.children = [];
+
+        }
+        Tree2.prototype = {
+            push: function (x) {
+                var arr = this.children
+                //自己节点的编号
+                var i = arr.length
+                while (i > 0) {
+                    //父节点的编号
+                    var p = parseInt((i - 1) / 2)
+                    //如果已经没有大小颠倒则退出
+                    if (arr[p] <= x) break;
+                    //把父节点的值放下去，自己提上来
+                    arr[i] = arr[p]
+                    i = p
+                }
+                arr[i] = x
+
+            },
+            pop: function () {
+                var arr = this.children
+                //最小值
+                var ret = arr[0]
+                //要提到根的值
+                var x = arr.pop()
+
+                //从根开始向下交换
+                if (0 < arr.length) {
+                    var i = 0;
+                    while (i * 2 + 1 < arr.length) {
+                        var a = i * 2 + 1,
+                            b = i * 2 + 2;
+                        //比较儿子的值，获取最小的
+                        if (b < arr.length && arr[b] < arr[a]) {
+                            a = b
+                        }
+                        //如果已经没有大小颠倒则退出
+                        if (arr[a] >= x) break;
+                        //把儿子的数值提上去
+                        arr[i] = arr[a]
+                        i = a
+                    }
+                    arr[i] = x
+                }
+
+
+                return ret
+            }
+        }
+        var node = new Tree2()
+        //堆的插入
+        node.push(0); //=>{ children: [ 0 ] }
+
+        node.push(5); //=>{ children: [ 0, 5 ] }
+
+        node.push(2); //{ children: [ 0, 5, 2 ] }
+        //3和4发生交换
+        node.push(6); //{ children: [ 0, 5, 2, 6 ] }
+        //2和3发生交换
+        node.push(7); //=>{ children: [ 0, 5, 2, 6, 7 ] }
+        node.push(4); //=>{ children: [ 0, 5, 2, 6, 7, 4 ] }
+        node.push(3); //=>{ children: [ 0, 5, 2, 6, 7, 4, 3 ] }
+        console.log(node)
+        //堆的删除
+        console.log(node.pop())
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let nums1 = [1,2,2,1], nums2 = [2,2]
+        console.log(intersection(nums1, nums2))
+
+        function intersection(nums1, nums2) {
+            let map = new Map()
+            for (let i = 0; i < nums1.length; i++) {
+                const item = map.get(nums1[i])
+                map.set(nums1[i], item == undefined ? 1 : item + 1)
+            }
+
+            let arr = []
+            for (let i = 0; i < nums2.length; i++) {
+                const item = map.get(nums2[i])
+                if (item) {
+                    arr.push(nums2[i])
+
+                }
+            }
+            return Array.from(new Set(arr))
+
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

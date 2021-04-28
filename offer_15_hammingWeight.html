@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let n = 00000000000000000000000000001011
+        console.log(hammingWeight(n))
+
+        function hammingWeight(n) {
+           let count=0
+           console.log(n)
+           while (n!=0) {
+               n=n&(n-1)
+               count++
+               
+           }
+           return count
+        };
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>
