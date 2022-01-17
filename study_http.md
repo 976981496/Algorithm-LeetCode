@@ -1,4 +1,5 @@
-﻿﻿﻿﻿
+﻿﻿
+
 #DNS解析流程
 DNS( Domain Name System)是“域名系统”的英文缩写，用于TCP/IP网络，将主机名和域名转换为IP地址。  
 DNS主要基于UDP运输层协议，而不是TCP。DNS是应用层协议，client端（一般指浏览器）构建DNS查询请求，依次被传输层，网络层，数据链路层等封装传送到达DNS服务器端，最终client端接收到DNS响应消息  

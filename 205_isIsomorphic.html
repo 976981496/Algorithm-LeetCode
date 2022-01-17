@@ -23,13 +23,13 @@
          * @param {ListNode} head
          * @return {ListNode}
          */
-        let head=new ListNode([1,2,3,4,5])
+        let head = new ListNode([1, 2, 3, 4, 5])
         var reverseList = function (head) {
             let pre = null
             let cur = head
 
             while (cur != null) {
-            console.log(cur)
+                console.log(cur)
                 let next = cur.next
                 cur.next = pre
                 pre = cur
@@ -41,7 +41,6 @@
         };
 
         console.log(reverseList(head))
-
     </script>
     <div id="app"></div>
 

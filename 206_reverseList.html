@@ -7,22 +7,22 @@
 
 <body>
     <script>
-        let s = "egg", t = "add"
-        console.log(isIsomorphic(s,t))
+        let s = "egg",
+            t = "add"
+        console.log(isIsomorphic(s, t))
 
-        function isIsomorphic(s,t) {
-    for (let i = 0; i < s.length; i++) {
-        if( s.indexOf(s[i])!=t.indexOf(t[i])){
-return false
-        }
-       
-        
-    }
-     
-return true
+        function isIsomorphic(s, t) {
+            for (let i = 0; i < s.length; i++) {
+                if (s.indexOf(s[i]) != t.indexOf(t[i])) {
+                    return false
+                }
+
+
+            }
+
+            return true
 
         };
-
     </script>
     <div id="app"></div>
 

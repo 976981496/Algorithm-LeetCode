@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>reverse</title>
+</head>
+
+<body>
+    <div id="app">
+        给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+        解题思想：
+    </div>
+
+    <script>
+        /**
+         * @param {number} x
+         * @return {number}
+         */
+        let x = -123
+
+        console.log('--------', reverse(x))
+
+
+        function reverse(x) {
+            x = x + ''
+            const i = x.indexOf('-');
+            console.log(x)
+            const base = i >= 0 ? x.substring(1) : x;
+
+            let f_num = base.split('')
+
+            let f_arry = f_num.reverse().join('')
+            let base1
+            if (i >= 0) {
+                base1 = Number('-' + f_arry)
+
+            } else {
+                base1 = Number(f_arry)
+            }
+
+            return ((((-1) * 2 ^ 31) < base1)&&(base1 < 2 ^ 31) )? base1 : 0
+        };
+    </script>
+
+</body>
+
+</html>
