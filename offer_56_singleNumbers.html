@@ -7,25 +7,40 @@
 
 <body>
     <script>
-        let nums = [4, 1, 4, 6]
-        console.log(singleNumbers(nums))
+        var x = 1
+        pas = {
+            x: 2,
+            pro: {
+                x: 3,
+                son: function () {
+                    return function () {
+                        console.log('==this', this)
+                        return this.x
+                    }
 
-        function singleNumbers(nums) {
-            let map = new Map()
-            for (let i = 0; i < nums.length; i++) {
-                const val = map.get(nums[i]);
-                map.set(nums[i], val == undefined ? 1 : val + 1)
-            }
-
-            let arr = []
-            for (let i = 0; i < nums.length; i++) {
-                const val = map.get(nums[i]);
-                if (val == 1) {
-                    arr.push(nums[i])
                 }
             }
-            return arr
-        };
+        }
+        console.log(pas.pro.son()()) //3
+        // let nums = [4, 1, 4, 6]
+        // console.log(singleNumbers(nums))
+
+        // function singleNumbers(nums) {
+        //     let map = new Map()
+        //     for (let i = 0; i < nums.length; i++) {
+        //         const val = map.get(nums[i]);
+        //         map.set(nums[i], val == undefined ? 1 : val + 1)
+        //     }
+
+        //     let arr = []
+        //     for (let i = 0; i < nums.length; i++) {
+        //         const val = map.get(nums[i]);
+        //         if (val == 1) {
+        //             arr.push(nums[i])
+        //         }
+        //     }
+        //     return arr
+        // };
     </script>
     <div id="app"></div>
 

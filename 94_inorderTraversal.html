@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let root = [1, null, 2, 3];
+        var obj = new BT();
+        obj.insert(55);
+        obj.insert(44);    
+        obj.insert(33);
+        obj.insert(22);
+        obj.insert(66);
+        obj.insert(77);
+        obj.insert(88);
+        obj.insert(60);
+        obj.insert(58);
+        obj.insert(63);
+        obj.insert(57);
+        obj.insert(56);
+        console.log(obj.Node);
+
+
+        function inorderTraversal(root) {
+            let res = [];
+            let traversal = (root) => {
+                console.log(root)
+                if (root == null) {
+                    return;
+                }
+                traversal(root.left);
+                // 中序遍历位置
+                res.push(root.val);
+                traversal(root.right);
+            };
+            traversal(root);
+            return res;
+        };
+
+        //基本二叉树的实现
+        function BT() {
+            this.root = null;
+            this.Node = function (e) {
+                this.value = e;
+                this.left = null;
+                this.right = null;
+            }
+            //添加元素
+            this.insert = function (e) {
+                function recursiveAdd(tem, e) {
+                    if (e.value < tem.value) {
+                        if (tem.left == null) {
+                            tem.left = e;
+                        } else {
+                            tem = tem.left;
+                            return recursiveAdd(tem, e);
+                        }
+                    } else {
+                        if (tem.right == null) {
+                            tem.right = e;
+                        } else {
+                            tem = tem.right;
+                            return recursiveAdd(tem, e);
+                        }
+                    }
+                }
+                e = new this.Node(e);
+                if (this.root == null) {
+                    this.root = e;
+                } else {
+                    TEM = this.root;
+                    recursiveAdd(TEM, e);
+                }
+                return this.root;
+            }
+            //查找元素
+            this.find = function (e) {
+                function recursiveFind(tem, e) {
+                    if (tem.value == e.value) {
+                        console.log(tem);
+                        return tem;
+                    } else {
+                        if (e.value < tem.value) {
+                            tem = tem.left;
+                            recursiveFind(tem, e)
+                        } else {
+                            if (e.value > tem.value) {
+                                tem = tem.right;
+                                recursiveFind(tem, e)
+                            }
+                        }
+                    }
+                }
+                e = new this.Node(e);
+                if (this.root == null) {
+                    return;
+                } else {
+                    TEM = this.root;
+                    recursiveFind(TEM, e);
+                }
+            }
+            //删除元素
+            this.delete = function (e) {
+                function recursiveDelete(tem, e) {
+                    if (e.value < tem.value) {
+                        if (tem.left == null) {
+                            return;
+                        } else {
+                            if (tem.left.value == e.value) {
+                                tem.left = null;
+                                return;
+                            } else {
+                                tem = tem.left;
+                                recursiveDelete(tem, e)
+                            }
+                        }
+                    } else {
+                        if (e.value > tem.value) {
+                            if (tem.right == null) {
+                                return;
+                            } else {
+                                if (tem.right.value == e.value) {
+                                    tem.right = null;
+                                    return;
+                                } else {
+                                    tem = tem.right;
+                                    recursiveDelete(tem, e)
+                                }
+                            }
+                        }
+                    }
+                }
+                e = new this.Node(e);
+                if (this.root == e) {
+                    this.root = null;
+                } else {
+                    TEM = this.root;
+                    recursiveDelete(TEM, e);
+                }
+            }
+        }
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>
