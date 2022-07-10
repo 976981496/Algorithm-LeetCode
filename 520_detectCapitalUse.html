@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Leetcode</title>
+</head>
+
+<body>
+    <script>
+        let s = "aaaaSaa"
+        let result = detectCapitalUse(s)
+        console.log(result)
+
+        function detectCapitalUse(word) {
+            //A-Z  65-90
+            //a-z  97-122
+            if (word.length >= 2 && word[0] == word[0].toLowerCase() && word[1] == word[1].toUpperCase()) {
+                return false
+            }
+            for (let index = 2; index < word.length; index++) {
+                // sdfS   true  fasle   ^  true
+                //accc   true   true    ^ fasle
+                if (word[1] == word[1].toLowerCase() ^ str == str.toLowerCase()) {
+                    return false
+                }
+            }
+            return true
+        };
+
+
+
+
+
+
+
+        //     function detectCapitalUse(word) {
+        //         //A-Z  65-90
+        //         //a-z  97-122
+        //         if(word.length<2)  return true
+
+        //         let firstStr = word[0];
+        //         let arr = [...word]
+        //         if (firstStr.charCodeAt() > 96) {
+        //             return arr.every((item) => {
+        //                 return item.charCodeAt() > 96;
+        //             });
+        //         }
+        //         //第一个大写
+        //         let no_first = arr.slice(1);
+
+        //         let no_firstStr = no_first[0];
+
+
+        //         if (no_firstStr.charCodeAt() > 96) {
+        //             return no_first.every((item) => {
+        //                 return item.charCodeAt() > 96;
+        //             });
+        //         }
+        //         if (no_firstStr.charCodeAt() < 91) {
+        //             return no_first.every((item) => {
+        //                 return item.charCodeAt() < 91
+        //             });
+        //         }
+        //         return false
+        //     };
+        // 
+    </script>
+    <div id="app"></div>
+
+</body>
+
+</html>

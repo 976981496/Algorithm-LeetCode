@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Leetcode</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    let nums = [0, 1, 2, 4, 5, 8, 12, 13],
+      target = 2
+    console.log(searchInsert(nums, target))
+
+    function searchInsert (nums, target) {
+      if (nums.length < 1) {
+        return -1
+      }
+      let start = 0
+      let end = nums.length
+
+      while (start <= end) {
+        let mid = Math.floor((start + end) / 2)
+        console.log('mid==', mid)
+        if (target == nums[mid]) {
+          console.log('============target == nums[mid]=============')
+          console.log('start ==', start)
+          console.log('mid ==', mid)
+          console.log('end ==', end)
+          return mid
+        } else if (target < nums[mid]) {
+          console.log('============target < nums[mid]=============')
+          console.log('start <', start)
+          console.log('mid  <', mid)
+          console.log('end  <', end)
+          end = mid + 1
+        } else if (target > nums[mid]) {
+          console.log('============target > nums[mid]=============')
+          console.log('start >', start)
+          console.log('mid >', mid)
+          console.log('end >', end)
+          start = mid
+        }
+      }
+      return start
+    };
+  </script>
+
+</body>
+
+</html>
