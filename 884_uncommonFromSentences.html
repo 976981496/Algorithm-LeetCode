@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Leetcode</title>
+</head>
+
+<body>
+  <script>
+    let s1 = "this apple is sweet", s2 = "this apple is sour"
+    console.log(uncommonFromSentences(s1, s2))
+
+    function uncommonFromSentences (s1, s2) {
+      let map = new Map()
+      let arr = []
+      let arr1 = s1.split(" ").concat(s2.split(" "))
+      for (let i = 0; i < arr1.length; i++) {
+        let item = map.get(arr1[i])
+        map.set(arr1[i], item == undefined ? 1 : item + 1)
+      }
+      console.log(arr1)
+      let res = []
+      map.forEach((val, key) => {
+        console.log(val, key);
+        if (val == 1) {
+          res.push(key)
+
+        }
+      })
+
+      console.log('res======', res)
+
+      return res
+    };
+  </script>
+  <div id="app"></div>
+
+</body>
+
+</html>

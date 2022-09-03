@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Leetcode</title>
+</head>
+
+<body>
+  <script>
+    let nums = [2, 2, 1, 1, 1, 2, 2]
+    console.log('majorityElement=====', majorityElement(nums))
+
+    function majorityElement (nums) {
+      let map = {}
+      let n = nums.length
+      for (let i = 0; i < nums.length; i++) {
+        const item = nums[i]
+        console.log('item---', item)
+        console.log('item---', map[item])
+
+        if (map[item]) {
+
+          console.log('item---', item)
+          console.log('item---', map[item])
+          map[item] = map[item] + 1
+        } else {
+          map[item] = 1
+        }
+      }
+      console.log('map---', map)
+      var minValue = -1
+      Object.keys(map).forEach((key) => {
+        if (map[key] > n / 2) {
+          minValue = key
+          return key
+        }
+      })
+
+      console.log('====minValue==', minValue)
+
+      return minValue
+
+    };
+  </script>
+  <div id="app"></div>
+
+</body>
+
+</html>

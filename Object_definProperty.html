@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Object.defineProperty</title>
+</head>
+
+<body>
+  <div id="app">
+    Object.defineProperty
+  </div>
+
+  <script>
+    let obj={
+      name:'88888'
+    }
+
+Object.defineProperty(obj,'name',{
+  get(){
+    console.log('在获取当前的name属性值')
+
+  },
+  set(){
+    console.log('在修改当前的name属性值')
+
+  },
+
+
+})
+
+
+console.log(obj.name)
+obj.name=9999
+
+  </script>
+
+</body>
+
+</html>

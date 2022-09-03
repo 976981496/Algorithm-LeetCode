@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Leetcode</title>
+</head>
+
+<body>
+  <script>
+    let nums = [1, 2, 3, 1, 2, 3]
+    let k = 2
+    console.log(containsNearbyDuplicate(nums, k))
+
+    function containsNearbyDuplicate (nums, k) {
+      let obj = {}
+      for (let i = 0; i < nums.length; i++) {
+        if (nums[i] in obj) {
+          let val = obj[nums[i]]
+          obj[nums[i]] = i
+          let abs = Math.abs(i - val)
+          if (abs <= k) {
+            return true
+          }
+        } else {
+          obj[nums[i]] = i
+        }
+
+      }
+      return false
+    };
+  </script>
+  <div id="app"></div>
+
+</body>
+
+</html>

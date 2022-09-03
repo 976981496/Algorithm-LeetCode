@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Leetcode</title>
+</head>
+
+<body>
+  <script>
+    let s = "loveleetcode"
+    console.log('firstUniqChar=====', firstUniqChar(s))
+
+    function firstUniqChar (s) {
+      let num = 0;
+
+      while (num < s.length) {
+        let nextNum = num + 1;
+        let startIndex = s.indexOf(s[num]);
+        let endIndex = s.lastIndexOf(s[num]);
+        console.log('startIndex', startIndex)
+        console.log('endIndex', endIndex)
+        if (endIndex == startIndex) {
+
+          return num;
+        };
+        num++;
+      }
+      return -1;
+
+    };
+
+    // function firstUniqChar (s) {
+    //   let map = {}
+    //   for (let i = 0; i < s.length; i++) {
+    //     const item = map[s[i]]
+    //     console.log(item)
+    //     if (item >= 0) {
+    //       map[s[i]] = s.length
+    //     } else {
+    //       map[s[i]] = i
+    //     }
+    //   }
+    //   let first = s.length
+    //   for (let pos of Object.values(map)) {
+    //     if (pos !== -1 && pos < first) {
+    //       first = pos;
+    //     }
+    //   }
+    //   if (first === s.length) {
+    //     first = -1;
+    //   }
+    //   return first
+
+    // };
+
+
+
+
+  </script>
+  <div id="app"></div>
+
+</body>
+
+</html>

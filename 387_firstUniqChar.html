@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Leetcode</title>
+</head>
+
+<body>
+  <script>
+    let s = "aabb"
+    console.log('firstUniqChar=====', firstUniqChar(s))
+
+    function firstUniqChar (s) {
+      let num = 0;
+
+      while (num < s.length) {
+        // let nextNum = num + 1;
+        let startIndex = s.indexOf(s[num]);
+        let endIndex = s.lastIndexOf(s[num]);
+        console.log('startIndex', startIndex)
+        console.log('endIndex', endIndex)
+        if (endIndex == startIndex) {
+
+          console.log('== --------', endIndex)
+          return num;
+        };
+        num++;
+      }
+      return -1;
+
+    };
+    // function firstUniqChar (s) {
+    //   let map = {}
+    //   for (let i = 0; i < s.length; i++) {
+    //     const item = map[s[i]]
+    //     console.log(item)
+    //     if (item >= 0) {
+    //       map[s[i]] = s.length
+    //     } else {
+    //       map[s[i]] = i
+    //     }
+    //   }
+    //   var minValue = Object.values(map).reduce(function (a, b) {
+    //     return (a > b) ? b : a
+    //   })
+      
+    //   console.log('======', minValue)
+
+    //   return minValue == s.length ? -1 : minValue
+
+    // };
+  </script>
+  <div id="app"></div>
+
+</body>
+
+</html>
