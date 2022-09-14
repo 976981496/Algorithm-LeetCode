@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>leetcode 55. 跳跃游戏</title>
+  </head>
 
-</head>
+  <div id="app">
+    给定一个非负整数数组，你最初位于数组的第一个位置。<br />
 
-<div id="app">
-    给定一个非负整数数组，你最初位于数组的第一个位置。<br>
+    数组中的每个元素代表你在该位置可以跳跃的最大长度。<br />
 
-    数组中的每个元素代表你在该位置可以跳跃的最大长度。<br>
+    判断你是否能够到达最后一个位置。<br />
 
-    判断你是否能够到达最后一个位置。<br>
+    示例 1:<br />
 
-    示例 1:<br>
+    输入: [2,3,1,1,4]<br />
+    输出: true<br />
+    解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。<br />
+  </div>
 
-    输入: [2,3,1,1,4]<br>
-    输出: true<br>
-    解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。<br>
-
-    来源：力扣（LeetCode）<br>
-    链接：https://leetcode-cn.com/problems/jump-game<br>
-    著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。<br>
-</div>
-
-<body>
+  <body>
     <script>
-        let points = [2, 1, 5, 0, 4]
-        console.log(canJump(points))
+      let points = [2, 1, 5, 0, 4]
+      console.log(canJump(points))
 
-        function canJump(nums) {
-            let len = nums.length
-            let index = []
-            for (let i = 0; i < len; i++) {
-                let num = i + nums[i]
-                index.push(num)
-            }
-            console.log(index)
-            let jump = 0
-            let can_jump_max = index[0]
-            while (jump < index.length && jump <= can_jump_max) {
-                //jump大于现在的最大距离
-                if (can_jump_max < index[jump]) {
-                    can_jump_max = index[jump]
-                }
-                jump++
-            }
-            if (jump == index.length) {
-                return true
-            }
+      function canJump(nums) {
+        let len = nums.length
+        let index = []
+        for (let i = 0; i < len; i++) {
+          let num = i + nums[i]
+          index.push(num)
+        }
+        console.log(index)
+        let jump = 0
+        let can_jump_max = index[0]
+        while (jump < index.length && jump <= can_jump_max) {
+          //jump大于现在的最大距离
+          if (can_jump_max < index[jump]) {
+            can_jump_max = index[jump]
+          }
+          jump++
+        }
+        if (jump == index.length) {
+          return true
+        }
 
-            return false
-        };
+        return false
+      }
     </script>
-
-</body>
-
+  </body>
 </html>

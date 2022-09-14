@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Leetcode</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <div id="app"></div>
+
     <script>
-        for (var i = 0; i < 10; i++) {
-            ((i) => {
-                setTimeout(() => {
-                    console.log(i);
-                }, 1000)
-            })(i)
-        }
+      let strImage =
+        '||/userfiles/9b81b438316e42ff9b301b456489de6e/images/lm/lmMerchant/2022/09/%E9%91%AB%E6%98%8C%E8%BE%BE01(1).jpg|/userfiles/9b81b438316e42ff9b301b456489de6e/images/lm/lmMerchant/2022/09/%E9%91%AB%E6%98%8C%E8%BE%BE02(1).jpg|/userfiles/9b81b438316e42ff9b301b456489de6e/images/lm/lmMerchant/2022/09/2(2).jpg|/userfiles/9b81b438316e42ff9b301b456489de6e/images/lm/lmMerchant/2022/09/3(1).jpg|/userfiles/9b81b438316e42ff9b301b456489de6e/images/lm/lmMerchant/2022/09/4(2).jpg|||/userfiles/9b81b438316e42ff9b301b456489de6e/images/lm/lmMerchant/2022/09/5(2).jpg'
+
+      console.log(f1(strImage))
+      function f1(str_image) {
+        console.log('bArray-')
+        let aString = str_image.substr(1)
+        //按“|”分割字符串为数组
+        var bArray = aString.split('|')
+        let cArray = bArray.filter((item) => {
+          return item != ''
+        })
+        console.log('bArray', bArray)
+        console.log('cArray', cArray)
+      }
     </script>
-    <div id="app">
-        第 30 题：两个数组合并成一个数组 请把两个数组 ['A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'D1', 'D2'] 和 ['A', 'B', 'C', 'D']，合并 为 ['A1',
-        'A2', 'A', 'B1', 'B2', 'B', 'C1', 'C2', 'C', 'D1', 'D2', 'D']。
-
-
-    </div>
-
-</body>
-
+  </body>
 </html>

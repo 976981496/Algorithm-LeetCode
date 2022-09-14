@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>twoSum</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>bilibili_有序数组=num 的最左位置</div>
+      arr[0,1,1,2,3,4,5,6,,7] num=2 return index=3
+    </div>
+
+    <script>
+      // arr[0,1,1,2,3,4,5,6,8,9]   有序
+      // >=num   最左
+
+      function mostLeftLessNumIndex(arr, num) {
+        if (arr.length == 0 || arr == null) {
+          return -1
+        }
+        let ans = -1
+        let L = 0
+        let R = arr.length - 1
+
+        while (L <= R) {
+          let mid = Math.round((L + R) / 2)
+          console.log(mid)
+          if (arr[mid] >= num) {
+            ans = mid
+            R = mid - 1
+          } else {
+            L = mid + 1
+          }
+        }
+        console.log(ans, 'ans')
+        return ans
+      }
+
+      let arr = [0, 1, 1, 2, 3, 4, 5, 6, 8, 9]
+      let num = 100
+
+      mostLeftLessNumIndex(arr, num)
+    </script>
+  </body>
+</html>

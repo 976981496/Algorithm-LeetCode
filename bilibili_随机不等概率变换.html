@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>twoSum</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>bilibili_随机概率变换:</div>
+
+      1-5的随机概率 到1-7的随机概率 函数f()等概率返回1,2,3,4,5 借助： 函数f() 返回1--7 的等概率返回 思路：1--5
+      等概率函数转换成 返回1,0的概率 返回1,2 ====》1 返回4,5 ====》0 返回3 ====》重新做
+    </div>
+
+    <script>
+      //返回1-5中等概率
+      function f1() {
+        return Math.random() < 0.84 ? 1 : 0
+      }
+      //返回1,2 ====》1 返回4,5 ====》0 返回3 ====》重新做
+      //返回0,1 等概率
+      // 0 0  or  1 1   重新算
+      //0 1 or 10  输出
+
+      function f2() {
+        let ans = 0
+        do {
+          ans = f1()
+        } while (ans == f1())
+        return ans
+      }
+    </script>
+  </body>
+</html>

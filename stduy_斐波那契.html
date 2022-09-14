@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>斐波那契</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        function fid1(n) {
-            if (n <= 1) {
-                return n
-            }
-            return fid1(n - 1) + fid1(n - 2)
+      //-------------------阶乘
+      let n = 3
+      fidG(n)
+      function fidG(n) {
+        let res = 0
+        cur = 1
+        for (let index = 1; index <= n; index++) {
+          cur = cur * index
+          res += cur
         }
+        console.log(res)
+        return res
+      }
 
-        function fid2(n) {
-
-            if (n <= 1) {
-                return n
-            }
-            let first = 0
-            let second = 1
-            for (let i = 0; i < n - 1; i++) {
-                let sum = first + second
-                first = second
-                second = sum
-
-            }
-            return second
+      //-------------------阶乘
+      function fid1(n) {
+        if (n <= 1) {
+          return n
         }
+        return fid1(n - 1) + fid1(n - 2)
+      }
 
-    
+      function fid2(n) {
+        if (n <= 1) {
+          return n
+        }
+        let first = 0
+        let second = 1
+        for (let i = 0; i < n - 1; i++) {
+          let sum = first + second
+          first = second
+          second = sum
+        }
+        return second
+      }
     </script>
     <div id="app"></div>
-
-</body>
-
+  </body>
 </html>
