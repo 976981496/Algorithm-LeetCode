@@ -6,41 +6,74 @@
 </head>
 
 <body>
+    <div id="app">
+        正确闭合的括号
+    </div>
     <script>
-        let s = "([}}])"
+        let s = "()[]{}"
+        // let s = "([}}])"
+        // let s = "([}}])"
         console.log(isValid(s))
 
-        function isValid(s) {
-            if (s.length % 2 != 0) {
+        function  isValid(s) { 
+            if (s.length%2!=0) {
                 return false
             }
-            let json = {
-                ']': '[',
-                '}': '{',
-                ')': '(',
+            let obj={
+                ')':'(',
+                ']':'[',
+                '}':'{',
             }
-
-            let stack = []
-            let s_arry = s.split('')
-            for (let i = 0; i < s_arry.length; i++) {
-                let item = s_arry[i]
-                if (item == '[' || item == '{' || item == '(') {
-                    stack.push(item)
-                } else {
-                    let stack_top = stack[stack.length - 1]
-                    if (json[item] == stack_top) {
-
-                        stack.pop()
-                    } else {
+            let zhan=[]
+            let array=s.split('')
+            for (let index = 0; index < s.length; index++) {
+                const element = s[index];
+                if (obj[element]) {
+                    //如果找到右括号--就取栈里的最后一个元素 是否==obj 的左边元素
+                    if (obj[element]!=zhan[zhan.length-1]) {
                         return false
+                    }else{
+                        zhan.pop()
                     }
+                }else{
+                    zhan.push(element)
                 }
             }
-            return stack.length == 0
+            return zhan.length===0
 
-        };
-    </script>
-    <div id="app"></div>
+        }
+
+        // function isValid(s) {
+        //     if (s.length % 2 != 0) {
+        //         return false
+        //     }
+        //     let json = {
+        //         ']': '[',
+        //         '}': '{',
+        //         ')': '(',
+        //     }
+
+        //     let stack = []
+        //     let s_arry = s.split('')
+        //     for (let i = 0; i < s_arry.length; i++) {
+        //         let item = s_arry[i]
+        //         if (item == '[' || item == '{' || item == '(') {
+        //             stack.push(item)
+        //         } else {
+        //             let stack_top = stack[stack.length - 1]
+        //             if (json[item] == stack_top) {
+
+        //                 stack.pop()
+        //             } else {
+        //                 return false
+        //             }
+        //         }
+        //     }
+        //     return stack.length == 0
+
+        // };
+   
+   </script>
 
 </body>
 

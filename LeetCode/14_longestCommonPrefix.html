@@ -5,7 +5,7 @@
     <title>Leetcode</title>
 </head>
 <div>
-    解题思路：
+    解题思路：最长公共前缀
     
 </div>
 
@@ -13,23 +13,44 @@
     <script>
         let strs = ["flower", "flow", "flight"]
         console.log(longestCommonPrefix(strs))
+        longestCommonPrefix(strs){
+            let res_str=''
+            if (strs.length<1) {
+                return res_str
+                
+            } 
+            for (let i = 0; i < strs[0].length; i++) { 
+                
+                for (let j = 1; j < strs[0].length; j++) { 
 
-        function longestCommonPrefix(strs) {
-            let res = ''
-
-            if (strs.length < 1) {
-                return res
-            }
-
-            for (let i = 0; i < strs[0].length; i++) {
-                for (let j = 1; j < strs.length; j++) {
-                    if (strs[j][i] != strs[0][i]) return res
+                    if (strs[j][i]!=strs[0][i]) {
+                        return res_str
+                        
+                    }
+                    res_str+=strs[0][i] 
                 }
-                res += strs[0][i]
             }
-            return res
-        };
-    </script>
+            return res_str
+
+        }
+
+        // function longestCommonPrefix(strs) {
+        //     let res = ''
+
+        //     if (strs.length < 1) {
+        //         return res
+        //     }
+
+        //     for (let i = 0; i < strs[0].length; i++) {
+        //         for (let j = 1; j < strs.length; j++) {
+        //             if (strs[j][i] != strs[0][i]) return res
+        //         }
+        //         res += strs[0][i]
+        //     }
+        //     return res
+        // };
+   
+   </script>
     <div id="app"></div>
 
 </body>

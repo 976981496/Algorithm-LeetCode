@@ -29,10 +29,6 @@ if (nums1[len1-1]<nums2[0]) {
     new_arry=nums2.concat(nums1)
 } 
 
-
-
-
-
   let len = len1 > len2 ? len1 : len2;
   let i=0,j=0
  
@@ -51,4 +47,4 @@ if (nums1[len1-1]<nums2[0]) {
       
   }
 };
-// @lc code=end
+

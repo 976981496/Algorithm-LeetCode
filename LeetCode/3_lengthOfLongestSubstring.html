@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>twoSum</title>
+</head>
+
+<body>
+    <div id="app">
+        回文数
+        解题思想：
+    </div>
+
+    <script>
+        /**
+         * @param {number} x
+         * @return {boolean}
+         */
+        let s = "pwwkew" 
+        lengthOfLongestSubstring(s)
+
+
+
+        
+
+        console.log(lengthOfLongestSubstring(s))
+
+        function lengthOfLongestSubstring(str) { 
+            let strObj={}
+            let strMaxLen=''
+            for (let index = 0; index < str.length; index++) {
+                const element = str[index];
+                for (let j = index+1; j < str.length; j++) {
+                if (strObj[element]>=0) {
+                    //当前字符串中存在两个相通的字符  知道下标，开始截取中间的
+                    let  child_str=str.substring(strObj[element],j);
+                     strMaxLen=child_str.length> strMaxLen.length?child_str:strMaxLen
+                   
+                }else{
+                    strObj[element]=index
+                } 
+                
+            } 
+                
+            } 
+            return strMaxLen
+
+        } 
+    </script>
+
+</body>
+
+</html>
