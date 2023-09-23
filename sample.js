@@ -8,8 +8,8 @@ const AsrClient = tencentcloud.asr.v20190614.Client;
 // 密钥可前往官网控制台 https://console.cloud.tencent.com/cam/capi 进行获取
 const clientConfig = {
   credential: {
-    secretId: "AKIDOnJjy4BEIOQUL4fCd1Qhq0WjogJ2bw64",
-    secretKey: "tb9XmqjNqBSauHSRK9ykKmFe3NXTUREu",
+    secretId: "",
+    secretKey: "",
   },
   region: "",
   profile: {
