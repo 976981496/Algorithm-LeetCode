@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>twoSum</title>
+    <pre>twoSum</pre>
+    <script></script>
+  </head>
+
+  <body>
+    <div id="app">
+        <button>audio</button> 
+
+    <script>
+   var audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+    var button = document.querySelector('button')
+    var pre = document.querySelector('pre')
+    var myScript = document.querySelector('script')
+
+    pre.innerHTML = myScript.innerHTML
+
+    // 立体声
+    var channels = 2
+    // 创建一个 采样率与音频环境 (AudioContext) 相同的 时长 2 秒的 音频片段。
+    var frameCount = audioCtx.sampleRate * 2.0
+
+    var myArrayBuffer = audioCtx.createBuffer(
+      channels,
+      frameCount,
+      audioCtx.sampleRate
+    ) 
+// 交叉合并左右声道的数据
+function intervalLeftAndRight(left, right) {
+    let totalLength = left.length + right.length
+    let data = new Float32Array(totalLength)
+    for(let i = 0; i < left.length; i++) {
+        let k = i * 2
+        data[k] = left[i]
+        data[k + 1] = right[i]
+    }
+    return data
+}
+function stopRecord() {
+    let leftData = mergeArray(dataList.left)
+    let rightData = mergeArray(dataList.right)
+    let allData = intervalLeftAndRight(leftData, rightData)
+     // 合并数据
+     let wavBuffer = createWavFile(allData) 
+     // 创建指定格式的数据
+     playRecord(wavBuffer)
+      // 播放录音
+    }
+
+function mergeArray(list) {
+    let length = list.length * list[0].length
+    let data = new Float32Array(length)
+    let offset = 0
+    for(let i = 0; i < list.length; i++) {
+        data.set(list[i], offset)
+        offset += list[i].length}
+        return data
+}
+    function createWavFile(audioData) {
+        const WAV_HEAD_SIZE = 44
+        let buffer = new ArrayBuffer(audioData.length * 2 + WAV_HEAD_SIZE)
+        let view = new DataView(buffer)
+        // 写入wav头部信息
+        writeUTFBytes(view, 0, 'RIFF')
+        view.setUint32(4, 44 + audioData.length * 2, true)
+        writeUTFBytes(view, 8, 'WAVE')
+        writeUTFBytes(view, 12, 'fmt ');
+        view.setUint32(16, 16, true);
+        view.setUint16(20, 1, true);
+        view.setUint16(22, 2, true);
+        view.setUint32(24, 44100, true);
+        view.setUint32(28, 44100 * 2, true);
+        view.setUint16(32, 2 * 2, true);
+        view.setUint16(34, 16, true);
+        writeUTFBytes(view, 36, 'data');
+        view.setUint32(40, audioData.length * 2, true);
+        // 写入wav头部，代码同上
+        let length = audioData.length;
+        let index = 44;
+        let volume = 1;
+        for (let i = 0; i < length; i++) {
+            view.setInt16(index, audioData[i] * (0x7FFF * volume), true);index += 2;}
+            return buffer;
+}
+function writeUTFBytes(view, offset, string) {
+    var lng = string.length;
+    for (var i = 0; i < lng; i++) { 
+        view.setUint8(offset + i, string.charCodeAt(i));}
+}
+    function beginRecord(mediaStream) {
+        let audioContext = new (window.AudioContext || window.webkitAudioContext)
+        let mediaNode = audioContext.createMediaStreamSource(mediaStream)
+        // 创建一个jsNode
+        let jsNode = createJSNode(audioContext)
+        // 需要连接扬声器消费到outputBuffer, process回调才能出发，且不给outputBuffer设置内容扬声器不会播出声音
+        jsNode.connect(audioContext.destination)
+        jsNode.onaudioprocess = (audioProcessingEvent) => {
+            let audioBuffer = audioProcessingEvent.inputBufferlet
+             leftChannelData = audioBuffer.getChannelData(0)
+              // 左声道
+              let rightChannelData = audioBuffer.getChannelData(1) 
+              // 右声道
+              // 将音频数据存入dataList
+              dataList.left.push(leftChannelData.slice(0))
+              dataList.right.push(rightChannelData.slice(0))
+            }
+              // 把mediaNode连接到jsNode
+              mediaNode.connect(jsNode)
+  }
+         navigator.mediaDevices.enumerateDevices().then(function(devices) {
+                  // 检测视频输入
+                  let video = devices.find((device) => {return device.kind === 'videoinput'})
+                  // 检测音频输入
+                  let audio = devices.find((device) => {return device.kind === 'audioinput'})
+                  // getUserMedia的参数
+                  let mediaConstraints = {
+                      video: !!video,audio: !!audio
+                    }
+                      let constraints = { video: video && mediaConstraints.video, audio: audio && mediaConstraints.audio }
+                      return navigator.mediaDevices.getUserMedia(constraints).then(mediaStream => 
+                      {stream = mediaStream 
+                        // stream 记录音频流，在停止录音等时使用
+                        // 开始录音...
+                        beginRecord(mediaStream)
+                    })})
+    button.onclick = function () {
+      // 使用白噪声填充;
+      // 就是 -1.0 到 1.0 之间的随机数
+      for (var channel = 0; channel < channels; channel++) {
+        // 这允许我们读取实际音频片段 (AudioBuffer) 中包含的数据
+        var nowBuffering = myArrayBuffer.getChannelData(channel)
+        for (var i = 0; i < frameCount; i++) {
+          // Math.random() is in [0; 1.0]
+          // audio needs to be in [-1.0; 1.0]
+          nowBuffering[i] = Math.random() * 2 - 1
+        }
+      }
+
+      // 获取一个 音频片段源节点 (AudioBufferSourceNode)。
+      // 当我们想播放音频片段时，我们会用到这个源节点。
+      var source = audioCtx.createBufferSource()
+      // 把刚才生成的片段加入到 音频片段源节点 (AudioBufferSourceNode)。
+      source.buffer = myArrayBuffer
+      // 把 音频片段源节点 (AudioBufferSourceNode) 连接到
+      // 音频环境 (AudioContext) 的终节点，这样我们就能听到声音了。
+      source.connect(audioCtx.destination)
+      // 开始播放声源
+      source.start()
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>按钮鼠标移动光晕</title>
+  </head>
+  <style>
+    .btn-body {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn {
+      background-color: #7983ff;
+      border: none;
+      padding: 3rem 5rem;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      top: var(--y);
+      left: var(--x);
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle closest-side, pink, transparent);
+      transition: width 0.2s ease, height 0.2s ease;
+    }
+
+    .btn span {
+      position: relative;
+    }
+
+    .btn:hover::before {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+
+  <body>
+    <div class="btn-body">
+        <button class="btn">
+          <span>Hover me</span>
+        </button> 
+    </div>
+    <script>
+      let btn = document.querySelector('.btn')
+      btn.addEventListener('mousemove', (e) => {
+        let rect = btn.getBoundingClientRect()
+        console.log('--------')
+        console.log(btn.getBoundingClientRect())
+        console.log(e.target.getBoundingClientRect())
+        console.log('--------')
+        let x = e.clientX - rect.left //鼠标距离浏览器左边的宽度 - 按钮距离浏览器左边的宽度
+        let y = e.clientY - rect.top // 鼠标距离浏览器上边的宽度 - 按钮距离浏览器上边的宽度
+        btn.style.setProperty('--y', y + 'px') // 设置style 属性 如： style="--y:ypx"
+        btn.style.setProperty('--x', x + 'px')
+      })
+    </script>
+  </body>
+</html>

@@ -18,14 +18,28 @@
  * @return {boolean}
  */
 var isSymmetric = function (root) {
-  if (root == null) {
-    return true;
-  }
-  let check = (left, right) => {
-    if (left == null || right == null) return left == right;
-    if (left.val != right.val) return false;
-    return check(left.right, right.left) && check(left.left, right.right);
+    if (root == null) {
+      return true;
+    }
+    let check = (left, right) => {
+        if (left==null||right==null) return left==right
+        if (left.val!==right.val) return false
+        return check(left.left,right.right)&& check(left.right,right.left)
+    }
+    return check(root.left,root.right)
   };
-  return check(root.left, root.right);
-};
+
+
+
+//   var isSymmetric = function (root) {
+//     if (root == null) {
+//       return true;
+//     }
+//     let check = (left, right) => {
+//       if (left == null || right == null) return left == right;
+//       if (left.val != right.val) return false;
+//       return check(left.right, right.left) && check(left.left, right.right);
+//     };
+//     return check(root.left, root.right);
+//   };
 // @lc code=end

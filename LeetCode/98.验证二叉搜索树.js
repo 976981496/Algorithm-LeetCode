@@ -28,6 +28,7 @@ const determineOrder = (arr) => {
   }
   let ascending = null;
   let nextArr = arr.slice(1);
+  console.log(nextArr)
   for (var i = 0; i < nextArr.length; i++) {
     if (nextArr[i] === arr[i]) {
       continue;

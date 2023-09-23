@@ -18,11 +18,25 @@
  * @param {TreeNode} q
  * @return {boolean}
  */
-var isSameTree = function (p, q) {
-  if (p == null && q == null) return true
-  if (p == null || q == null) return false
-  if (p.val != q.val) return false
+//判断相等的两个树 就需要
+// 每个值都相等  左子树和右子树都相等
 
-  return isSameTree(q.left, p.left) && isSameTree(q.right, p.right)
-}
+var isSameTree = function (p, q) {
+    if (p == null && q == null) return true
+    if (p == null || q == null) return false
+    if (p.val !==q.val) return false
+    
+  
+    return  isSameTree(q.left,p.left)&&isSameTree(q.right,p.right)
+  }
+
+
+
+// var isSameTree = function (p, q) {
+//   if (p == null && q == null) return true
+//   if (p == null || q == null) return false
+//   if (p.val != q.val) return false
+
+//   return isSameTree(q.left, p.left) && isSameTree(q.right, p.right)
+// }
 // @lc code=end

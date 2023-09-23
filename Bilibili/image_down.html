@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>twoSum</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>bilibili_有序数组=num 的最左位置</div>
+      <img src="https://agent-v2.lianyirong.com.cn/param-web/bup/qrCode/20230425140839924.png" />
+      arr[0,1,1,2,3,4,5,6,,7] num=2 return index=3
+    </div>
+
+    <script>
+    //   import axios from 'axios'
+      /**
+       * 图片url链接转base64
+       * @param {String} url 图片链接
+       * @returns 转base64后的值或者报错信息
+       */
+      function imgUrlToBase64(url) {
+        return new Promise((resolve, reject) => {
+          if (!url) {
+            reject('请传入url内容')
+          }
+
+          if (/\.(png|jpe?g|gif|svg)(\?.*)?$/.test(url)) {
+            // 图片地址
+            const image = new Image()
+            // 设置跨域问题
+            image.setAttribute('crossOrigin', 'anonymous')
+            // 图片地址
+            image.src = url
+            image.onload = () => {
+              console.log(image)
+              const canvas = document.createElement('canvas')
+              const ctx = canvas.getContext('2d')
+              canvas.width = image.width
+              canvas.height = image.height
+              ctx.drawImage(image, 0, 0, image.width, image.height)
+              // 获取图片后缀
+              const ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase()
+              // 转base64
+              const dataUrl = canvas.toDataURL(`image/${ext}`)
+
+              resolve(dataUrl || '')
+            }
+          } else {
+            // 非图片地址
+            reject('非(png/jpe?g/gif/svg等)图片地址')
+          }
+        })
+      }
+      async function imageToBase64(url) {
+        // 获取图片的二进制数据
+        const { data } = await axios.get(url, { responseType: 'blob' })
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader()
+          reader.onloadend = (event) => {
+            /// 转换结束回调
+            try {
+              const fullImgBase64 = event.target.result ?? ''
+              const imgBase64 = fullImgBase64?.split('base64,')[1] ?? ''
+              resolve(imgBase64)
+            } catch (e) {
+              reject(e)
+            }
+          }
+          // 读取 图片 二进制数据 转成 base64
+          reader.readAsDataURL(data)
+        })
+      }
+      function convertImageToBase64(imgUrl, callback) {
+        const image = new Image()
+        image.crossOrigin = 'anonymous'
+
+        console.log(imgUrl)
+        image.onload = () => {
+          const canvas = document.createElement('canvas')
+          const ctx = canvas.getContext('2d')
+          canvas.height = image.naturalHeight
+          canvas.width = image.naturalWidth
+          ctx.drawImage(image, 0, 0)
+          const dataUrl = canvas.toDataURL()
+          callback && callback(dataUrl)
+        }
+        image.src = imgUrl
+      }
+      /**
+       * 读取图片（或文件）转成base64
+       * @param {Object} file 图片文件的file，一般是文件上传的file信息
+       * @returns 转base64后的base64图片地址，或错误信息
+       */
+
+      function down() {
+        const src = convertImageToBase64(
+          'https://agent-v2.lianyirong.com.cn/param-web/bup/qrCode/20230425140839924.png'
+        )
+
+        const fileName = 'imgName'
+        const canvas = document.createElement('canvas')
+        const img = document.createElement('img')
+        // 解决跨域 Canvas 污染问题
+        img.setAttribute('crossOrigin', 'Anonymous')
+        //将资源链接赋值过去，才能触发img.onload事件
+        img.src = src
+        img.onload = function (e) {
+          canvas.width = img.width
+          canvas.height = img.height
+          const context = canvas.getContext('2d')
+          //绘制图片
+          context.drawImage(img, 0, 0, img.width, img.height)
+          canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height)
+          //将canvas转base64码，然后创建一个a连接自动下载图片
+          canvas.toBlob((blob) => {
+            const link = document.createElement('a')
+            link.href = window.URL.createObjectURL(blob)
+            link.download = fileName
+            link.click()
+          })
+        }
+      }
+    //   imageToBase64('https://agent-v2.lianyirong.com.cn/param-web/bup/qrCode/20230425140839924.png')
+      convertImageToBase64('https://agent-v2.lianyirong.com.cn/param-web/bup/qrCode/20230425140839924.png')
+      const src =imgUrlToBase64('https://agent-v2.lianyirong.com.cn/param-web/bup/qrCode/20230425140839924.png')
+    </script>
+  </body>
+</html>
